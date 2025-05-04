@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <img src="assets/meletiou-logo.svg" alt="Meletiou Logo" class="logo">
+        <div class="right">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav nav-top">
+                <ul class="menu">
+                    <li><a href="#about">Ποιοι Είμαστε</a></li>
+                    <li><a href="#contact">Επικοινωνία</a></li>
+                </ul>
+            </nav>
+            <nav class="nav nav-bottom">
+                <ul class="menu">
+                    <button onclick="location.href='register.html'" class="btn">Επικοινωνία</button>
+                    <button onclick="location.href='login.html'" class="btn solid">Καλέστε μας</button>
+                </ul>
+            </nav>
+        </div>
+        <div class="fullscreen-menu">
+            <ul>
+                <li><a href="#about">Ποιοι Είμαστε</a></li>
+                <li><a href="#contact">Επικοινωνία</a></li>
+                <li><a href="register.html">Επικοινωνία</a></li>
+                <li><a href="login.html">Καλέστε μας</a></li>
+            </ul>
+            <!-- <button onclick="location.href='register.html'" class="btn">Επικοινωνία</button>
+            <button onclick="location.href='login.html'" class="btn solid">Καλέστε μας</button> -->
+        </div>
+    </header>
+    <div class="hero" style="background-image: url('assets/1111.jpg');">
+        <h1>Αξιόπιστες και γρήγορες λύσεις μεταφορών</h1>
+        <p>Στις περιοχή της Βοιωτίας και της Αττικής</p>
+    </div>
+
+    <div class="features">
+        <div class="feature-box">
+            <img src="assets/icon1.svg" alt="Icon 1" class="feature-icon">
+            <div class="feature-content">
+                <h3>Τίτλος 1</h3>
+                <p>Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.</p>
+                <button class="btn">Περισσότερα</button>
+            </div>
+        </div>
+        <div class="feature-box">
+            <img src="assets/icon2.svg" alt="Icon 2" class="feature-icon">
+            <div class="feature-content">
+                <h3>Τίτλος 2</h3>
+                <p>Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.</p>
+                <button class="btn">Περισσότερα</button>
+            </div>
+        </div>
+        <div class="feature-box">
+            <img src="assets/icon3.svg" alt="Icon 3" class="feature-icon">
+            <div class="feature-content">
+                <h3>Τίτλος 3</h3>
+                <p>Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.Περιγραφή για την πρώτη υπηρεσία ή χαρακτηριστικό.</p>
+                <button class="btn">Περισσότερα</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-1">
+        <h2>Ο Τίτλος της Ενότητας</h2>
+        <p>Αυτή είναι μια περιγραφή για την ενότητα. Μπορείτε να προσθέσετε περισσότερες πληροφορίες εδώ.</p>
+        <img src="assets/meletiou-truck.jpg" alt="Meletiou Truck" class="section1-image">
+    </div>
+
+    <div class="section section-2">
+        <h2>Our Services</h2>
+        <p>Explore our logistics solutions tailored to your needs.</p>
+        <div class="tabs">
+            <div class="tab-navigation">
+                <button class="tab active" data-tab="transport">Transport</button>
+                <button class="tab" data-tab="store">Store</button>
+                <button class="tab" data-tab="clear-protect">Clear & Protect</button>
+                <button class="tab" data-tab="logistics-management">Logistics Management</button>
+                <button class="tab" data-tab="solutions">Solutions</button>
+            </div>
+            <div class="dropdown-navigation">
+                <select id="mobile-tabs">
+                    <option value="transport">Transport</option>
+                    <option value="store">Store</option>
+                    <option value="clear-protect">Clear & Protect</option>
+                    <option value="logistics-management">Logistics Management</option>
+                    <option value="solutions">Solutions</option>
+                </select>
+            </div>
+            <div class="tab-content">
+                <div class="carousel" id="transport">
+                    <div class="carousel-card">
+                        <img src="assets/transport1.svg" alt="Ocean Contract">
+                        <h3>Ocean Contract</h3>
+                        <p>Reliable ocean freight solutions for your business.</p>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="assets/transport2.svg" alt="Air Freight">
+                        <h3>Air Freight</h3>
+                        <p>Fast and secure air freight services worldwide.</p>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="assets/transport3.svg" alt="Rail Transport">
+                        <h3>Rail Transport</h3>
+                        <p>Efficient rail transport for long-distance logistics.</p>
+                    </div>
+                    <div class="carousel-card">
+                        <img src="assets/transport4.svg" alt="Road Transport">
+                        <h3>Road Transport</h3>
+                        <p>Flexible road transport solutions for all needs.</p>
+                    </div>
+                </div>
+                <div class="carousel" id="store" style="display: none;">
+                    <!-- Carousel content for Store -->
+                </div>
+                <div class="carousel" id="clear-protect" style="display: none;">
+                    <!-- Carousel content for Clear & Protect -->
+                </div>
+                <div class="carousel" id="logistics-management" style="display: none;">
+                    <!-- Carousel content for Logistics Management -->
+                </div>
+                <div class="carousel" id="solutions" style="display: none;">
+                    <!-- Carousel content for Solutions -->
+                </div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-prev">&lt;</button>
+            <button class="carousel-next">&gt;</button>
+        </div>
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="section section-3">
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h2>Streamline Your Logistics</h2>
+                <p>Discover how our innovative solutions can simplify your supply chain and improve efficiency.</p>
+                <button class="cta-button">Learn More</button>
+            </div>
+            <div class="image-content">
+                <img src="assets/logistics-visual.jpg" alt="Logistics Visual">
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h2>Enhance Your Operations</h2>
+                <p>Our tailored solutions are designed to optimize your logistics and drive success.</p>
+                <button class="cta-button">Get Started</button>
+            </div>
+            <div class="image-content">
+                <img src="assets/operations-visual.jpg" alt="Operations Visual">
+            </div>
+        </div>
+    </div>
+
+    <div class="test"></div>
+    <script src="script.js"></script>
+</body>
+</html>

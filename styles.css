@@ -1,0 +1,860 @@
+/* Φόρτωση γραμματοσειρών */
+@font-face {
+  font-family: 'Gotham';
+  src: url('fonts/Gotham-Book.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('fonts/Gotham-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('fonts/Gotham-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+/* Βασικές ρυθμίσεις */
+body {
+  font-family: 'Gotham', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+  max-width: 100vw!important;
+
+}
+
+.test {
+  height: 500vh;
+  background-color: aquamarine;
+}
+
+/* Header Section */
+.header {
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick to the top of the viewport */
+  left: 0;
+  max-width: 100vw; /* Ensure it doesn't exceed the viewport width */
+  width: 100%;
+  background: transparent; /* Transparent background */
+  color: white; /* White text */
+  padding: 8px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10; /* Ensure it appears above the hero */
+  box-sizing: border-box; /* Include padding in width calculations */
+  margin-bottom: -100px;
+}
+
+.header.hidden {
+  transform: translateY(-100%); /* Slide out of view */
+  transition: transform 0.2s ease-in-out; /* Smooth slide-out effect */
+}
+
+.header.visible {
+  transform: translateY(0); /* Slide back into view */
+  transition: transform 0.2s ease-in-out; /* Smooth slide-in effect */
+}
+
+.header::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Set the blue background height to 120px */
+  background-color: #fff;
+  z-index: -1; /* Place it behind the header */
+  transform: translateY(-100%); /* Initially hidden above the viewport */
+  transition: transform .2s ease-in-out; /* Smooth slide-in/out effect */
+}
+
+.header.scrolled::before {
+  transform: translateY(0); /* Slide in when scrolled */
+}
+
+.header.scrolled .logo,
+.header.scrolled .menu li a,
+.header.scrolled .btn {
+  transition: color .2s ease-in-out, filter .2s ease-in-out, border-color .2s ease-in-out; /* Match the blue background transition */
+}
+
+.header.scrolled .logo {
+  content: url('assets/meletiou-logo2.svg'); /* Change logo image */
+  transition: content 0.2s ease-in-out; /* Smooth transition for image change */
+  transition: fill 0.2s ease-in-out; /* Smooth transition for color change */
+}
+
+.header.scrolled .menu li a {
+  color: #021c4d; /* Change menu links to red */
+}
+
+.header.scrolled .btn {
+  border-color: #021c4d; /* Change button border to red */
+  color: #021c4d; /* Change button text to red */
+}
+
+.header.scrolled .btn:hover {
+  background: #021c4d; /* Change button background to red on hover */
+  color: white; /* Change button text to white on hover */
+}
+
+.header.scrolled .btn.solid {
+  background: #021c4d!important; /* Change button background to red */
+  color: #fff!important; /* Change button text to white */
+}
+
+.header.scrolled .hamburger span {
+  background-color: #021c4d; /* Change to blue when header is scrolled */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.right {
+  display: flex;
+  flex-direction: column!important; /* Stack items vertically */
+  gap: 0px;
+}
+
+.header .btn {
+  background: transparent;
+  border: 1.5px solid white; /* White border */
+  color: white; /* White text */
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.1s, color 0.1s; /* Faster hover effect */
+}
+
+.header .btn:hover {
+  background: white; /* White background on hover */
+  color: #021c4d; /* Black text on hover */
+}
+
+.solid {
+  background: white!important;
+  color: #021c4d!important;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 100%; /* Optional: Limit the width of the nav */
+  padding: 0 0px; /* Add padding to prevent overflow */
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+  height: 42px;
+  /* background-color: aqua; */
+}
+
+.nav-bottom {
+  justify-content:flex-end;
+  /* background-color:aqua; */
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white; /* White text for links */
+  font-weight: 400;
+}
+
+.logo {
+  height: 60px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative; /* Ensure the overlay is positioned correctly */
+  height: 80vh;
+  min-height: 70vh; /* Ensure it covers the full height */
+  background: url('assets/1111.jpg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align text to the center */
+  justify-content: center;
+  text-align: center; /* Align text to the center */
+  color: white;
+  background-color: blanchedalmond;
+  padding: 0 36px; /* Add space on the left and right */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with transparency */
+  z-index: 1; /* Place it behind the text */
+}
+
+.hero h1,
+.hero p {
+  position: relative; /* Ensure text is above the overlay */
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better readability */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.2em;
+  font-weight: 900;
+  margin: 0px;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Προσθήκη σκιάς στο κείμενο */
+  max-width: 50vw;
+}
+
+.hero p {
+  font-size: 2rem;
+  margin-top: 10px;
+  z-index: 2;
+  margin: 0px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Προσθήκη σκιάς στο κείμενο */  max-width: 50vw;
+  margin: 1em;
+
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 42px;
+  height: 12px; /* Adjust height for two bars */
+  cursor: pointer;
+  z-index: 15; /* Above the header */
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 42px;
+  background-color: white; /* Default color */
+  border-radius: 2px;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, .0rem); /* Adjusted for proper alignment */
+}
+
+.hamburger.active span:nth-child(2) {
+  transform: rotate(-45deg) translate(8px, -0px); /* Adjusted for proper alignment */
+}
+
+.hamburger span:nth-child(3) {
+  display: none; /* Hide the third bar */
+}
+
+.hamburger.active span {
+  background-color: #021c4d; /* Change to blue when active */
+}
+
+/* Fullscreen Menu */
+.fullscreen-menu {
+  display: flex; /* Ensure it's flex for animation */
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: #021c4d;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 14; /* Below the hamburger */
+  transform: translateX(100%); /* Initially off-screen to the right */
+  transition: transform 0.2s ease-in-out; /* Slide-in/out animation */
+}
+
+.fullscreen-menu.active {
+  transform: translateX(0); /* Slide in from the right */
+}
+
+.fullscreen-menu ul {
+  list-style: none; /* Remove list dots */
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.fullscreen-menu li {
+  margin: 20px 0;
+}
+
+.fullscreen-menu a {
+  text-decoration: none; /* Remove underline */
+  font-size: 1.5rem;
+  color: #021c4d; /* Match the main menu color */
+  font-weight: bold;
+  transition: color 0.2s ease-in-out; /* Optional: Add hover effect */
+}
+
+.fullscreen-menu a:hover {
+  color: #333; /* Optional: Slightly darker color on hover */
+}
+
+.fullscreen-menu .btn {
+  display: inline-block;
+  background: transparent;
+  border: 1.5px solid #021c4d; /* Match button border to menu color */
+  color: #021c4d; /* Match button text to menu color */
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  margin: 10px 0; /* Add spacing between buttons */
+}
+
+.fullscreen-menu .btn:hover {
+  background: #021c4d; /* Change background to blue on hover */
+  color: white; /* Change text to white on hover */
+}
+
+.fullscreen-menu .btn.solid {
+  background: #021c4d; /* Solid blue background */
+  color: white; /* White text */
+}
+
+/* New Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 36px 36px;
+  background-color: #fff;
+  min-height: 50vh;
+  gap: 36px;
+}
+
+.feature-box {
+  display: flex; /* Use flexbox for two columns */
+  align-items: flex-start;
+  width: 30%;
+  background: white;
+  padding: 24px;
+  border-radius: 6px;
+  border: 1px solid #bebebe; /* Blue border */
+  transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  gap: 24px;
+}
+
+.feature-box:hover {
+  transform: translateY(0px);
+  border-color: #021c4d; /* Change border color on hover */
+  border: 2px solid;;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.feature-content {
+  flex: 1; /* Take remaining space */
+
+}
+
+.feature-content h3 {
+  font-size: 1.5rem;
+  color: #021c4d;
+  margin: 0 0 12px 0;
+}
+
+.feature-content p {
+  font-size: 1rem;
+  color: #000;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+}
+
+.feature-content .btn {
+  background: #021c4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  font-size: 1rem;
+
+}
+
+.feature-content .btn:hover {
+  background: #333;
+}
+
+.section1-image {
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 70vh;
+  object-fit: cover; /* Maintain aspect ratio */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.section-1 {
+  padding: 72px 36px;
+  text-align: center;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.section-2 {
+  padding: 72px 36px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.section-2 h2 {
+  font-size: 2rem;
+  color: #021c4d;
+  margin-bottom: 16px;
+}
+
+.section-2 p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 36px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+
+.dropdown-navigation {
+  display: none; /* Hidden by default */
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.dropdown-navigation select {
+  appearance: none; /* Remove native dropdown styling */
+  -webkit-appearance: none; /* Remove native dropdown styling for Safari */
+  -moz-appearance: none; /* Remove native dropdown styling for Firefox */
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+}
+
+.dropdown-navigation::after {
+  content: '▼'; /* Add dropdown arrow */
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #333;
+  pointer-events: none; /* Prevent interaction with the arrow */
+}
+
+.dropdown-navigation select:focus {
+  outline: none;
+  border-color: #021c4d; /* Highlight border on focus */
+}
+
+.dropdown-navigation::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+
+.tab-navigation::before {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Center the gray line within the red underline */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.075); /* Faint gray line */
+  z-index: 0;
+}
+
+.tab {
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+  z-index: 1; /* Ensure tabs are above the faint line */
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Align red underline with the gray line */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Slightly thicker red underline */
+  background: #021c4d; /* Red underline for active tab */
+  transition: transform 0.3s ease-in-out;
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.tab:hover::after {
+  transform: scaleX(1.1); /* Slightly enlarge underline on hover */
+}
+
+.tab:not(.active)::after {
+  transform: scaleX(0); /* Hide underline for inactive tabs */
+}
+
+.tab-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-card {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  padding: 16px;
+  text-align: left; /* Align content to the left */
+  flex: 0 0 25%; /* Show 4 cards at a time */
+}
+
+.carousel-card h3 {
+  font-size: 1.2rem;
+  color: #021c4d;
+  margin-bottom: 8px;
+  text-align: left; /* Align title to the left */
+}
+
+.carousel-card p {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: left; /* Align description to the left */
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.carousel-prev,
+.carousel-next {
+  background: #021c4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: #333;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #021c4d;
+}
+
+.section-3 {
+  padding: 72px 36px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 8px; /* Rounded corners */
+  display: flex;
+  flex-direction: column; /* Stack content-wrapper vertically */
+  gap: 48px; /* Add spacing between content-wrapper elements */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row; /* Align text and image side by side */
+  gap: 36px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto; /* Center content */
+  align-items: center; /* Align items vertically */
+}
+
+.text-content {
+  flex: 1; /* Take up equal space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left; /* Align text to the left */
+}
+
+.text-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #021c4d;
+  margin-bottom: 16px;
+}
+
+.text-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: #021c4d;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  width: fit-content; /* Ensure the button width fits its content */
+  display: inline-block; /* Ensure proper sizing */
+  margin: 0 auto; /* Center the button horizontally */
+}
+
+.cta-button:hover {
+  background-color: #333;
+}
+
+.image-content {
+  flex: 1; /* Take up equal space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-content img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px; /* Rounded corners */
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.section-4 {
+  padding: 72px 36px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 8px; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-4 .content-wrapper {
+  display: flex;
+  gap: 36px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.section-4 .text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-4 .text-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #021c4d;
+  margin-bottom: 16px;
+}
+
+.section-4 .text-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.section-4 .cta-button {
+  background-color: #021c4d;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  width: fit-content; /* Ensure the button width fits its content */
+  display: inline-block; /* Ensure proper sizing */
+  margin: 0 auto; /* Center the button horizontally */
+}
+
+.section-4 .cta-button:hover {
+  background-color: #333;
+}
+
+.section-4 .image-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-4 .image-content img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px; /* Rounded corners */
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 6px 16px; /* Reduce padding for smaller header */
+    height: 80px; /* Adjust height */
+  }
+  .header::before {
+    height: 80px; /* Reduce background height */
+  }
+  .nav {
+    display: none; /* Hide navigation on mobile */
+  }
+  .hamburger {
+    display: flex; /* Show hamburger on mobile */
+  }
+  .hero h1 {
+    font-size: 2rem; /* Smaller font size */
+    line-height: 1.4em;
+    font-weight: 900;
+    margin: 0px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better readability */
+    max-width: 100vw;
+  }
+  .hero p {
+    font-size: 1.5rem;
+    line-height: 1.4em;
+    max-width: 70vw;
+    margin: 0px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better readability */
+    margin-top: 1em !important;
+  }
+  .features {
+    flex-direction: column; /* Stack feature boxes vertically */
+    gap: 24px; /* Add spacing between boxes */
+  }
+  .feature-box {
+    width: 100%; /* Full width for each box */
+  }
+  .feature-content h3 {
+    font-size: 1.2rem; /* Smaller font size for titles on mobile */
+  }
+  .feature-content .btn {
+    width: 100%; /* Full width for buttons on mobile */
+    text-align: center; /* Center the text */
+  }
+  .section1-image {
+    width: 100%;
+  }
+  .section-1 .section1-image {
+    width: 100%;
+  }
+  .carousel-card {
+    flex: 0 0 80%; /* Show 1 card at a time on mobile */
+  }
+  .tab-navigation {
+    display: none; /* Hide tabs on mobile */
+  }
+  .dropdown-navigation {
+    display: block; /* Show dropdown on mobile */
+  }
+  .tab-navigation {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .content-wrapper {
+    flex-direction: column; /* Stack text and image vertically */
+    gap: 24px;
+  }
+  .image-content img {
+    width: 100%; /* Full width for mobile */
+  }
+  .text-content {
+    text-align: center; /* Center-align text for mobile */
+  }
+  .cta-button {
+    width: 100%; /* Full width for mobile */
+    text-align: center;
+  }
+  .section-4 .content-wrapper {
+    flex-direction: column; /* Stack content vertically */
+    gap: 24px;
+  }
+  .section-4 .image-content img {
+    width: 100%; /* Full width for mobile */
+  }
+  .section-4 .text-content {
+    text-align: center; /* Center-align text for mobile */
+  }
+  .section-4 .cta-button {
+    width: 100%; /* Full width for mobile */
+    text-align: center;
+  }
+}
